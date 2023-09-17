@@ -1,9 +1,8 @@
 ﻿using System.Globalization;
 using System.Security.Claims;
 using System.Security.Principal;
-using Utils;
 
-namespace Identity.Identity.Extensions
+namespace Utils
 {
     public static class IdentityExtensions
     {
@@ -28,7 +27,7 @@ namespace Identity.Identity.Extensions
             var userId = identity?.GetUserId();
             return userId.HasValue()
                 ? (T)Convert.ChangeType(userId, typeof(T), CultureInfo.InvariantCulture)
-                : default;
+                : default(T);
         }
 
         public static string GetUserName(this IIdentity identity)
